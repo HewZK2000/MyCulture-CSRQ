@@ -75,6 +75,15 @@ These findings do not imply that CSRQs prove genuine understanding or should rep
 
 Start with `python -m CSRQ_Converter --help` from this repository root, or follow the converter guide for installation and a dry run. Live generation requires provider API access; offline tests do not.
 
+Repository Status
+---
+This repository is being prepared for public release.
+- ☑ MyCulture dataset
+- [ ] CSRQ conversion code and prompts
+- ☑ Evaluation and deterministic scoring scripts
+
+The dataset and code will be released soon. Please watch this repository for updates.
+
 ## Citation
 
 If you find this work useful, please cite the paper. The final BibTeX entry will be added when publication metadata is available.
