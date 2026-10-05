@@ -72,10 +72,8 @@ These findings do not imply that CSRQs prove genuine understanding or should rep
 This repository is being prepared for public release.
 
 - [ ] MyCulture dataset
-- [ ] Dataset construction and validation pipeline
 - [ ] CSRQ conversion code and prompts
 - [ ] Evaluation and deterministic scoring scripts
-- [ ] Converted benchmark items and filtering logs
 
 The dataset and code will be released soon. Please watch this repository for updates.
 
