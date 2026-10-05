@@ -6,7 +6,7 @@ Official repository for the paper **"Between Multiple Choice and Open Response: 
 Universiti Malaya, Malaysia  
 \* Equal contribution
 
-Paper (coming soon)  · Dataset (coming soon) · Code (coming soon)
+Paper (coming soon) · [Dataset](Dataset/) · [Converter](CSRQ_Converter/) · [Evaluation](Evaluation/)
 
 ## Overview
 
@@ -67,17 +67,13 @@ The results show that measured performance changes substantially even when the u
 
 These findings do not imply that CSRQs prove genuine understanding or should replace existing benchmarks. Instead, CSRQs provide a matched, deterministic audit for studying how much a benchmark score depends on its evaluation format.
 
-## Repository Status
+## Repository layout
 
-This repository is being prepared for public release.
+- `Dataset/` contains the aligned 1,821-item MCQ, CSRQ, and CRQ benchmark files.
+- `CSRQ_Converter/` contains the six-stage question-generation and formatting pipeline, prompt templates, source adapters, tests, and its [usage guide](CSRQ_Converter/README.md). The pipeline generates new structured questions from source questions; it is not a direct reformat of the published benchmark files.
+- `Evaluation/` contains the scoring harness and its [usage guide](Evaluation/README.md).
 
-- [ ] MyCulture dataset
-- [ ] Dataset construction and validation pipeline
-- [ ] CSRQ conversion code and prompts
-- [ ] Evaluation and deterministic scoring scripts
-- [ ] Converted benchmark items and filtering logs
-
-The dataset and code will be released soon. Please watch this repository for updates.
+Start with `python -m CSRQ_Converter --help` from this repository root, or follow the converter guide for installation and a dry run. Live generation requires provider API access; offline tests do not.
 
 ## Citation
 
@@ -94,4 +90,3 @@ If you find this work useful, please cite the paper. The final BibTeX entry will
 ## Contact
 
 For questions about this work, please contact **Chee Seng Chan** at `cs.chan@um.edu.my`.
-
