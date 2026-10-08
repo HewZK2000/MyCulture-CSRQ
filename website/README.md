@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-## Builds
+## Builds 
 
 - `npm run build` validates the Sites deployment build.
 - `npm run build:github` produces a static GitHub Pages export in `out/`.
