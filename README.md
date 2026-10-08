@@ -90,8 +90,7 @@ If you find this work useful, please cite the paper. The final BibTeX entry will
 
 ```bibtex
 @inproceedings{hew2025myculture,
-  title={Between Multiple Choice and Open Response:
-Evaluating LLMs with Option-Free Deterministic Scoring},
+  title={Between Multiple Choice and Open Response: Evaluating LLMs with Option-Free Deterministic Scoring},
   author={Hew, Zhong Ken and Yang, Sze Jue and Chan, Chee Seng},
   booktitle={Proceedings of the 2026 Conference on Empirical Methods in Natural Language Processing},
   year={2026}
