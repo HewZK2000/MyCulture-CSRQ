@@ -89,10 +89,12 @@ The dataset and code will be released soon. Please watch this repository for upd
 If you find this work useful, please cite the paper. The final BibTeX entry will be added when publication metadata is available.
 
 ```bibtex
-@article{hew2026myculture,
-  title   = {Between Multiple Choice and Open Response: Evaluating LLMs with Option-Free Deterministic Scoring},
-  author  = {Hew, Zhong Ken and Yang, Sze Jue and Chan, Chee Seng},
-  year    = {2026}
+@inproceedings{hew2025myculture,
+  title={Between Multiple Choice and Open Response:
+Evaluating LLMs with Option-Free Deterministic Scoring},
+  author={Hew, Zhong Ken and Yang, Sze Jue and Chan, Chee Seng},
+  booktitle={Proceedings of the 2026 Conference on Empirical Methods in Natural Language Processing},
+  year={2026}
 }
 ```
 
