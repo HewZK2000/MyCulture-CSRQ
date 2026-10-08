@@ -6,7 +6,7 @@ Official repository for the paper **"Between Multiple Choice and Open Response: 
 Universiti Malaya, Malaysia  
 \* Equal contribution
 
-Paper (coming soon) · [Dataset](Dataset/) · [Converter](CSRQ_Converter/) · [Evaluation](Evaluation/)
+Paper (coming soon) · [Dataset](Dataset/) · Converter (coming soon) · [Evaluation](Evaluation/)
 
 ## Overview
 
