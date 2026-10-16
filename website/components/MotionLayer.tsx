@@ -43,12 +43,13 @@ export default function MotionLayer({ children }: MotionLayerProps) {
         const heroVisuals = select('.instrument-panel, .benchmark-orbit');
 
         const heroTimeline = gsap.timeline({ defaults: { ease: 'power3.out' } });
+        // Keep the whole entrance near 1s: readers skim paper pages and should not wait on motion.
         heroTimeline
-          .from(nav, { y: -70, autoAlpha: 0, duration: 0.65 })
-          .from(heroPieces, { y: 34, autoAlpha: 0, duration: 0.78, stagger: 0.075 }, '-=0.35')
-          .from(heroVisuals, { x: desktop ? 46 : 0, y: desktop ? 0 : 30, rotation: desktop ? 1.8 : 0, scale: 0.96, autoAlpha: 0, duration: 0.95 }, '-=0.72')
-          .from(select('.format-card'), { x: 34, autoAlpha: 0, duration: 0.62, stagger: 0.1 }, '-=0.58')
-          .from(select('.scroll-cue'), { y: 12, autoAlpha: 0, duration: 0.45 }, '-=0.2');
+          .from(nav, { y: -40, autoAlpha: 0, duration: 0.4 })
+          .from(heroPieces, { y: 20, autoAlpha: 0, duration: 0.5, stagger: 0.04 }, 0.05)
+          .from(heroVisuals, { x: desktop ? 32 : 0, y: desktop ? 0 : 20, rotation: desktop ? 1.2 : 0, scale: 0.97, autoAlpha: 0, duration: 0.6 }, 0.1)
+          .from(select('.format-card'), { x: 24, autoAlpha: 0, duration: 0.45, stagger: 0.06 }, 0.25)
+          .from(select('.scroll-cue'), { y: 10, autoAlpha: 0, duration: 0.3 }, '-=0.1');
 
         gsap.to(select('.instrument-axis span:last-child'), {
           x: 7,
@@ -79,7 +80,7 @@ export default function MotionLayer({ children }: MotionLayerProps) {
         });
 
         const revealTargets = select(
-          '.benchmark-gateway, .section-intro, .split-heading, .culture-copy, .passport-card, .limitations-grid > div, .resource-copy, .citation-box, .schema-grid > div, .audit-card, .benchmark-cta',
+          '.benchmark-gateway, .section-intro, .split-heading, .culture-copy, .passport-card, .limitations-grid > div, .resource-copy, .citation-box, .audit-card, .benchmark-cta',
         );
         revealTargets.forEach((element) => {
           gsap.from(element, {
@@ -105,7 +106,6 @@ export default function MotionLayer({ children }: MotionLayerProps) {
           ['.dimension-grid', '.dimension-grid article'],
           ['.example-grid', '.example-card'],
           ['.construction-steps', '.construction-steps li'],
-          ['.schema-list', '.schema-list > div'],
           ['.use-grid', '.use-grid article'],
         ];
 
@@ -232,7 +232,19 @@ export default function MotionLayer({ children }: MotionLayerProps) {
       },
     );
 
-    return () => media.revert();
+    // Scroll reveals hide off-screen content until it is scrolled to, so finish them before
+    // printing or "Save as PDF" — otherwise those sections come out blank.
+    const finishRevealsForPrint = () => {
+      ScrollTrigger.getAll().forEach((trigger) => {
+        if (!trigger.vars.scrub) trigger.animation?.progress(1);
+      });
+    };
+    window.addEventListener('beforeprint', finishRevealsForPrint);
+
+    return () => {
+      window.removeEventListener('beforeprint', finishRevealsForPrint);
+      media.revert();
+    };
   }, { scope: root });
 
   return (

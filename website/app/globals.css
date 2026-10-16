@@ -660,6 +660,10 @@ h1, h2, h3, blockquote, .finding-number, .format-heading strong, .stats-grid str
   .performance-table-notes { grid-template-columns: 1fr; padding-inline: 20px; }
 }
 
+@media print {
+  .scroll-progress, .scroll-cue { display: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }

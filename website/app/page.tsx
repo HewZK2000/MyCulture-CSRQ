@@ -129,7 +129,7 @@ export default function Home() {
         <div className="gateway-copy">
           <p>There is more to explore</p>
           <h2 id="benchmark-gateway-title">Open the full MyCulture benchmark guide.</h2>
-          <span>See all six cultural dimensions, matched MCQ–CSRQ–CRQ examples, the construction workflow, audit criteria, and planned release schema.</span>
+          <span>See all six cultural dimensions, matched MCQ–CSRQ–CRQ examples, the full model results, the construction workflow, and audit criteria.</span>
         </div>
         <a className="gateway-action" href={`${basePath}/benchmark`}>
           <span>Explore MyCulture</span>
@@ -283,8 +283,8 @@ export default function Home() {
             <p>The paper, MyCulture dataset, and evaluation toolkit are available now.</p>
             <div className="resource-links">
               <a href="https://drive.google.com/file/d/1z28TAx8mLZcl2D_3s7_6oXTKTycgABb-/view?usp=sharing"><span>PDF</span><b>Paper</b><i>Available ↗</i></a>
-              <a href="https://github.com/HewZK2000/MyCulture-CSRQ"><span>DATA</span><b>MyCulture</b><i>Available ↗</i></a>
-              <a href="https://github.com/HewZK2000/MyCulture-CSRQ"><span>CODE</span><b>Evaluation toolkit</b><i>Available ↗</i></a>
+              <a href="https://github.com/HewZK2000/MyCulture-CSRQ/tree/main/Dataset"><span>DATA</span><b>MyCulture</b><i>Available ↗</i></a>
+              <a href="https://github.com/HewZK2000/MyCulture-CSRQ/tree/main/Evaluation"><span>CODE</span><b>Evaluation toolkit</b><i>Available ↗</i></a>
             </div>
           </div>
           <CopyCitation />

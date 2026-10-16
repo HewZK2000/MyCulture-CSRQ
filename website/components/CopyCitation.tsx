@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-const citation = `@inproceedings{hew2025myculture,
+const citation = `@inproceedings{hew2026myculture,
   title={Between Multiple Choice and Open Response:
 Evaluating LLMs with Option-Free Deterministic Scoring},
   author={Hew, Zhong Ken and Yang, Sze Jue and Chan, Chee Seng},

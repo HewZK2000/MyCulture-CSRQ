@@ -1,18 +1,9 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import { findLeader, meanOptionGap, type ModelResult, type ScoreKey } from '@/lib/performance';
 
-type ScoreKey = 'mcq' | 'csrqLoose' | 'csrqStrict' | 'crqLoose' | 'crqStrict';
 type ReasoningFilter = 'all' | 'reasoning' | 'standard';
-
-type ModelResult = {
-  id: string;
-  family: string;
-  model: string;
-  reasoning: boolean;
-  formatFailure?: boolean;
-  scores: Record<ScoreKey, number | null>;
-};
 
 const metrics: Array<{ key: ScoreKey; label: string; short: string }> = [
   { key: 'mcq', label: 'MCQ', short: 'MCQ' },
@@ -79,11 +70,8 @@ export default function MyCulturePerformance() {
   }, [direction, family, metric, query, reasoning]);
 
   const chartRows = results.filter((row) => selected.includes(row.id));
-  const leader = filtered.find((row) => row.scores[metric] !== null);
-  const scoredRows = filtered.filter((row) => row.family !== 'Baseline' && row.scores[metric] !== null);
-  const averageOptionGap = scoredRows.length
-    ? scoredRows.reduce((sum, row) => sum + ((row.scores.mcq ?? 0) - (row.scores.csrqStrict ?? 0)), 0) / scoredRows.length
-    : 0;
+  const leader = findLeader(filtered, metric);
+  const averageOptionGap = meanOptionGap(filtered);
   const hoveredRow = hovered ? results.find((row) => row.id === hovered.id) : null;
   const hoveredMetric = hovered ? metrics.find((item) => item.key === hovered.key) : null;
   const bestByMetric = Object.fromEntries(metrics.map(({ key }) => [key, Math.max(...results.filter((row) => row.family !== 'Baseline').map((row) => row.scores[key] ?? -1))])) as Record<ScoreKey, number>;
@@ -157,7 +145,7 @@ export default function MyCulturePerformance() {
       <div className="performance-summary">
         <article><span>Rows in view</span><strong>{filtered.length}</strong><small>of {results.length} published rows</small></article>
         <article><span>Leader · {metrics.find((item) => item.key === metric)?.label}</span><strong>{leader ? scoreLabel(leader.scores[metric]) : '—'}</strong><small>{leader?.model ?? 'No matching rows'}</small></article>
-        <article><span>Mean MCQ → CSRQ strict gap</span><strong>{averageOptionGap.toFixed(2)}</strong><small>points across the current view</small></article>
+        <article><span>Mean MCQ → CSRQ strict gap</span><strong>{averageOptionGap === null ? '—' : averageOptionGap.toFixed(2)}</strong><small>points in view · excludes format failures</small></article>
       </div>
 
       <div className="performance-profile-card">

@@ -33,7 +33,7 @@ export default function BenchmarkPage() {
             <p className="benchmark-overline">Benchmark profile</p>
             <h1><em>MyCulture</em> makes the evaluation instrument visible.</h1>
             <p>Each underlying Malaysian cultural knowledge item is instantiated in parallel MCQ, CSRQ, and CRQ formats—holding the knowledge target constant while changing answer exposure and scoring.</p>
-            <div className="hero-actions"><a className="button button-primary" href="https://github.com/HewZK2000/MyCulture-CSRQ">Dataset <span aria-hidden="true">↗</span></a><a className="button button-secondary" href="https://drive.google.com/file/d/1z28TAx8mLZcl2D_3s7_6oXTKTycgABb-/view?usp=sharing">Read paper ↗</a></div>
+            <div className="hero-actions"><a className="button button-primary" href="https://github.com/HewZK2000/MyCulture-CSRQ/tree/main/Dataset">Dataset <span aria-hidden="true">↗</span></a><a className="button button-secondary" href="https://drive.google.com/file/d/1z28TAx8mLZcl2D_3s7_6oXTKTycgABb-/view?usp=sharing">Read paper ↗</a></div>
           </div>
           <div className="benchmark-orbit" aria-label="Three parallel benchmark formats">
             <div className="orbit-center"><strong data-count="1821">1,821</strong><span>knowledge targets</span></div>
@@ -73,7 +73,7 @@ export default function BenchmarkPage() {
                 <div className="example-question-block"><span className="example-kicker">Question</span><h3 lang="ms">Apakah kenyataan yang betul mengenai permainan Lansaran dan budaya suku kaum Murut?</h3></div>
                 <div className="example-detail example-detail-columns" lang="ms">
                   <div><span className="example-kicker">Statements</span><ol className="statement-list" type="I"><li>Lansaran dibina secara individu tanpa melibatkan masyarakat.</li><li>Permainan Lansaran memerlukan ukuran kawasan antara 8 hingga 30 kaki persegi.</li><li>Kayu “Selangan Batu” digunakan dalam pembinaan lantai Lansaran kerana ketahanannya.</li><li>Lansaran hanya untuk kanak-kanak dan tidak melibatkan orang dewasa.</li></ol></div>
-                  <div><span className="example-kicker">Options</span><ol className="option-list" type="A"><li>II, III</li><li>I, IV</li><li>I, II, IV</li><li>II, I</li></ol></div>
+                  <div><span className="example-kicker">Options</span><ol className="option-list" type="A"><li>II, III</li><li>I, IV</li><li>I, II, IV</li><li>II, IV</li></ol></div>
                 </div>
               </div>
               <div className="example-card-footer"><div className="example-answer">Selected answer <code>A</code></div><p>Candidate final-answer combinations are visible.</p></div>
