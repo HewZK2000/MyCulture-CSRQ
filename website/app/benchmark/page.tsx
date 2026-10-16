@@ -1,21 +1,68 @@
+import type { CSSProperties } from 'react';
 import type { Metadata } from 'next';
 import MyCulturePerformance from '@/components/MyCulturePerformance';
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
 export const metadata: Metadata = {
-  title: 'MyCulture Benchmark — Dataset, Formats, and Construction',
+  title: 'MyCulture Benchmark: Dataset, Formats, and Construction',
   description: 'Explore MyCulture, a Malaysia-centered cultural benchmark in Bahasa Malaysia with parallel MCQ, CSRQ, and CRQ formats.',
 };
 
+// `glow` tints the art panel behind each icon to echo the icon's own palette.
 const domains = [
-  ['Arts', 'Seni', 'Creative traditions, visual practices, and cultural expression.'],
-  ['Attire', 'Pakaian', 'Traditional garments, materials, meanings, and community use.'],
-  ['Customary practices', 'Adat', 'Social practices, ceremonies, and community traditions.'],
-  ['Entertainment', 'Hiburan', 'Games, performances, and shared recreational practices.'],
-  ['Food', 'Makanan', 'Dishes, preparation, ingredients, and food traditions.'],
-  ['Religions', 'Agama', 'Religious traditions and culturally situated practices.'],
+  { name: 'Arts', ms: 'Seni', icon: 'arts', glow: 'rgba(242, 182, 50, .34)', description: 'Creative traditions, visual practices, and cultural expression.' },
+  { name: 'Attire', ms: 'Pakaian', icon: 'attire', glow: 'rgba(47, 106, 163, .22)', description: 'Traditional garments, materials, meanings, and community use.' },
+  { name: 'Customary practices', ms: 'Adat', icon: 'customary', glow: 'rgba(242, 182, 50, .3)', description: 'Social practices, ceremonies, and community traditions.' },
+  { name: 'Entertainment', ms: 'Hiburan', icon: 'entertainment', glow: 'rgba(242, 182, 50, .3)', description: 'Games, performances, and shared recreational practices.' },
+  { name: 'Food', ms: 'Makanan', icon: 'food', glow: 'rgba(79, 138, 105, .24)', description: 'Dishes, preparation, ingredients, and food traditions.' },
+  { name: 'Religions', ms: 'Agama', icon: 'religions', glow: 'rgba(232, 120, 40, .22)', description: 'Religious traditions and culturally situated practices.' },
 ];
+
+// The Lansaran example item, in the benchmark's Bahasa Malaysia with an English gloss for readers.
+type Bilingual = { ms: string; en: string };
+
+const choiceQuestion: Bilingual = {
+  ms: 'Apakah kenyataan yang betul mengenai permainan Lansaran dan budaya suku kaum Murut?',
+  en: 'Which statements about the Lansaran game and the culture of the Murut community are correct?',
+};
+
+const statements: Bilingual[] = [
+  { ms: 'Lansaran dibina secara individu tanpa melibatkan masyarakat.', en: 'Lansaran is built individually, without involving the community.' },
+  { ms: 'Permainan Lansaran memerlukan ukuran kawasan antara 8 hingga 30 kaki persegi.', en: 'The Lansaran game requires an area of between 8 and 30 square feet.' },
+  { ms: 'Kayu “Selangan Batu” digunakan dalam pembinaan lantai Lansaran kerana ketahanannya.', en: '“Selangan Batu” wood is used to build the Lansaran floor because of its durability.' },
+  { ms: 'Lansaran hanya untuk kanak-kanak dan tidak melibatkan orang dewasa.', en: 'Lansaran is only for children and does not involve adults.' },
+];
+
+const openQuestion: Bilingual = {
+  ms: 'Huraikan ciri-ciri fizikal, cara pembinaan dan peranan komuniti dalam permainan tradisional Lansaran suku kaum Murut berdasarkan amalan tradisi yang dinyatakan.',
+  en: 'Describe the physical features, construction method, and community role in the traditional Lansaran game of the Murut community, based on the traditional practices described.',
+};
+
+const rubric: Bilingual[] = [
+  { ms: 'Tempat permainan Lansaran berukuran antara lapan (8) hingga 30 kaki persegi.', en: 'The Lansaran play area measures between eight (8) and 30 square feet.' },
+  { ms: 'Lansaran dapat menampung lebih kurang 30 orang pemain.', en: 'Lansaran can hold about 30 players.' },
+  { ms: 'Lansaran dibina secara bergotong-royong di ruang khas rumah panjang suku kaum Murut.', en: 'Lansaran is built through gotong-royong (communal work) in a dedicated space of the Murut longhouse.' },
+  { ms: 'Beberapa batang kayu bulat yang keras dan liat sebesar lengan orang dewasa dikenali sebagai kayu “Selangan Batu”.', en: 'Several hard, tough round logs as thick as an adult’s arm are known as “Selangan Batu” wood.' },
+  { ms: 'Kayu “Selangan Batu” diikat dengan rotan saga bagi menampung lantai Lansaran.', en: 'The “Selangan Batu” wood is tied with saga rattan to support the Lansaran floor.' },
+  { ms: 'Lantai Lansaran dibina sekaki ke bawah daripada paras lantai rumah secara tergantung.', en: 'The Lansaran floor is suspended one foot below the level of the house floor.' },
+];
+
+function ExampleQuestion({ ms, en }: Bilingual) {
+  return (
+    <div className="example-question-block">
+      <span className="example-kicker">Question</span>
+      <h3 lang="ms">{ms}</h3>
+      <p className="example-translation" lang="en">{en}</p>
+    </div>
+  );
+}
+
+function BilingualItems({ items }: { items: Bilingual[] }) {
+  return items.map(({ ms, en }) => (
+    <li key={ms}><span lang="ms">{ms}</span><span className="example-translation" lang="en">{en}</span></li>
+  ));
+}
 
 export default function BenchmarkPage() {
   return (
@@ -32,7 +79,7 @@ export default function BenchmarkPage() {
             <div className="venue-pill"><span className="venue-dot" /> Malaysia · Bahasa Malaysia</div>
             <p className="benchmark-overline">Benchmark profile</p>
             <h1><em>MyCulture</em> makes the evaluation instrument visible.</h1>
-            <p>Each underlying Malaysian cultural knowledge item is instantiated in parallel MCQ, CSRQ, and CRQ formats—holding the knowledge target constant while changing answer exposure and scoring.</p>
+            <p>Each underlying Malaysian cultural knowledge item is instantiated in parallel MCQ, CSRQ, and CRQ formats. This holds the knowledge target constant while changing answer exposure and scoring.</p>
             <div className="hero-actions"><a className="button button-primary" href="https://github.com/HewZK2000/MyCulture-CSRQ/tree/main/Dataset">Dataset <span aria-hidden="true">↗</span></a><a className="button button-secondary" href="https://drive.google.com/file/d/1z28TAx8mLZcl2D_3s7_6oXTKTycgABb-/view?usp=sharing">Read paper ↗</a></div>
           </div>
           <div className="benchmark-orbit" aria-label="Three parallel benchmark formats">
@@ -57,8 +104,14 @@ export default function BenchmarkPage() {
       <section className="section shell" id="dimensions">
         <div className="split-heading"><div><p className="section-label">Coverage</p><h2>Six windows into Malaysian cultural knowledge.</h2></div><p>MyCulture is a controlled testbed, not a claim to cover every Malaysian identity, community, or tradition.</p></div>
         <div className="dimension-grid">
-          {domains.map(([name, ms, description], index) => (
-            <article key={name}><span>0{index + 1}</span><div><p lang="ms">{ms}</p><h3>{name}</h3><small>{description}</small></div></article>
+          {domains.map(({ name, ms, icon, glow, description }, index) => (
+            <article key={name} style={{ '--glow': glow } as CSSProperties}>
+              <div className="dimension-art">
+                <span className="dimension-index">0{index + 1}</span>
+                <img src={`${basePath}/assets/dimensions/${icon}.webp`} alt="" width={320} height={320} loading="lazy" decoding="async" />
+              </div>
+              <div className="dimension-copy"><p lang="ms">{ms}</p><h3>{name}</h3><small>{description}</small></div>
+            </article>
           ))}
         </div>
       </section>
@@ -68,11 +121,11 @@ export default function BenchmarkPage() {
           <div className="section-intro compact"><p className="section-label">Parallel format example</p><h2>Same knowledge. Three elicitation and scoring procedures.</h2><p>The example below assesses knowledge about the traditional Lansaran game of the Murut community.</p></div>
           <div className="example-grid">
             <article className="example-card example-blue">
-              <div className="example-label"><span>01</span><strong>MCQ</strong></div>
+              <div className="example-label"><div className="example-title"><span>01</span><strong>MCQ</strong></div><em>Visible final options</em></div>
               <div className="example-card-body">
-                <div className="example-question-block"><span className="example-kicker">Question</span><h3 lang="ms">Apakah kenyataan yang betul mengenai permainan Lansaran dan budaya suku kaum Murut?</h3></div>
-                <div className="example-detail example-detail-columns" lang="ms">
-                  <div><span className="example-kicker">Statements</span><ol className="statement-list" type="I"><li>Lansaran dibina secara individu tanpa melibatkan masyarakat.</li><li>Permainan Lansaran memerlukan ukuran kawasan antara 8 hingga 30 kaki persegi.</li><li>Kayu “Selangan Batu” digunakan dalam pembinaan lantai Lansaran kerana ketahanannya.</li><li>Lansaran hanya untuk kanak-kanak dan tidak melibatkan orang dewasa.</li></ol></div>
+                <ExampleQuestion {...choiceQuestion} />
+                <div className="example-detail example-detail-columns">
+                  <div><span className="example-kicker">Statements</span><ol className="statement-list" type="I"><BilingualItems items={statements} /></ol></div>
                   <div><span className="example-kicker">Options</span><ol className="option-list" type="A"><li>II, III</li><li>I, IV</li><li>I, II, IV</li><li>II, IV</li></ol></div>
                 </div>
               </div>
@@ -80,19 +133,19 @@ export default function BenchmarkPage() {
             </article>
 
             <article className="example-card example-green">
-              <div className="example-label"><span>02</span><strong className="csrq-wordmark">CSRQ</strong></div>
+              <div className="example-label"><div className="example-title"><span>02</span><strong className="csrq-wordmark">CSRQ</strong></div><em>Option-free + deterministic</em></div>
               <div className="example-card-body">
-                <div className="example-question-block"><span className="example-kicker">Question</span><h3 lang="ms">Apakah kenyataan yang betul mengenai permainan Lansaran dan budaya suku kaum Murut?</h3></div>
-                <div className="example-detail" lang="ms"><span className="example-kicker">Response primitives</span><ol className="choice-list" type="A"><li>Lansaran dibina secara individu tanpa melibatkan masyarakat.</li><li>Permainan Lansaran memerlukan ukuran kawasan antara 8 hingga 30 kaki persegi.</li><li>Kayu “Selangan Batu” digunakan dalam pembinaan lantai Lansaran kerana ketahanannya.</li><li>Lansaran hanya untuk kanak-kanak dan tidak melibatkan orang dewasa.</li></ol></div>
+                <ExampleQuestion {...choiceQuestion} />
+                <div className="example-detail"><span className="example-kicker">Response primitives</span><ol className="choice-list" type="A"><BilingualItems items={statements} /></ol></div>
               </div>
               <div className="example-card-footer"><div className="example-answer">Constructed answer <code>B, C</code></div><p>No candidate subsets; exact canonical verification.</p></div>
             </article>
 
             <article className="example-card example-gold">
-              <div className="example-label"><span>03</span><strong>CRQ</strong></div>
+              <div className="example-label"><div className="example-title"><span>03</span><strong>CRQ</strong></div><em>Open response + judge</em></div>
               <div className="example-card-body">
-                <div className="example-question-block"><span className="example-kicker">Question</span><h3 lang="ms">Huraikan ciri-ciri fizikal, cara pembinaan dan peranan komuniti dalam permainan tradisional Lansaran suku kaum Murut berdasarkan amalan tradisi yang dinyatakan.</h3></div>
-                <div className="example-detail rubric-preview" lang="ms"><span className="example-kicker">Rubric · six required points</span><ol className="rubric-list"><li>Tempat permainan Lansaran berukuran antara lapan (8) hingga 30 kaki persegi.</li><li>Lansaran dapat menampung lebih kurang 30 orang pemain.</li><li>Lansaran dibina secara bergotong-royong di ruang khas rumah panjang suku kaum Murut.</li><li>Beberapa batang kayu bulat yang keras dan liat sebesar lengan orang dewasa dikenali sebagai kayu “Selangan Batu”.</li><li>Kayu “Selangan Batu” diikat dengan rotan saga bagi menampung lantai Lansaran.</li><li>Lantai Lansaran dibina sekaki ke bawah daripada paras lantai rumah secara tergantung.</li></ol></div>
+                <ExampleQuestion {...openQuestion} />
+                <div className="example-detail rubric-preview"><span className="example-kicker">Rubric · six required points</span><ol className="rubric-list"><BilingualItems items={rubric} /></ol></div>
               </div>
               <div className="example-card-footer"><div className="example-answer">Generated answer <code>Text</code></div><p>Open response evaluated against all six rubric points by a judge.</p></div>
             </article>
@@ -123,7 +176,7 @@ export default function BenchmarkPage() {
 
       <section className="section use-section" id="use">
         <div className="shell">
-          <div className="section-intro compact"><p className="section-label">Intended use</p><h2>Use MyCulture to study evaluation sensitivity—not to reduce culture to a single score.</h2></div>
+          <div className="section-intro compact"><p className="section-label">Intended use</p><h2>Use MyCulture to study evaluation sensitivity, not to reduce culture to a single score.</h2></div>
           <div className="use-grid"><article><span>Recommended</span><ul><li>Matched MCQ–CSRQ audit</li><li>Judge-sensitivity analysis</li><li>Format-following diagnostics</li><li>Malaysia-centered cultural evaluation</li></ul></article><article><span>Use with care</span><ul><li>Claims of complete cultural coverage</li><li>Claims of genuine understanding</li><li>Universal ranking conclusions</li><li>Unreviewed high-stakes deployment</li></ul></article></div>
           <div className="benchmark-cta"><div><h3>Ready to examine the full methodology?</h3><p>Read the paper and explore the <a href="https://github.com/HewZK2000/MyCulture-CSRQ">dataset and evaluation toolkit on GitHub ↗</a>.</p></div><a className="button button-primary" href="https://drive.google.com/file/d/1z28TAx8mLZcl2D_3s7_6oXTKTycgABb-/view?usp=sharing">Open the paper ↗</a></div>
         </div>

@@ -4,27 +4,31 @@ import { InstrumentGapChart, JudgeSensitivityChart, OptionRemovalChart } from '@
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
+// Displayed top to bottom; `index` keeps each format's site-wide number (MCQ 01, CSRQ 02, CRQ 03).
 const formats = [
   {
-    name: 'MCQ',
-    score: '88.1',
-    eyebrow: 'Visible final options',
-    detail: 'Easy to score, but answer choices can turn recall into recognition.',
-    tone: 'blue',
-  },
-  {
-    name: 'CSRQ',
-    score: '56.8',
-    eyebrow: 'Option-free + deterministic',
-    detail: 'Construct a canonical subset, ordering, or matching—then verify it exactly.',
-    tone: 'green',
-  },
-  {
+    index: '03',
     name: 'CRQ',
     score: '22.9',
     eyebrow: 'Open response + judge',
     detail: 'Expressive answers, but the result can depend on who evaluates them.',
     tone: 'gold',
+  },
+  {
+    index: '02',
+    name: 'CSRQ',
+    score: '56.8',
+    eyebrow: 'Option-free + deterministic',
+    detail: 'Construct a canonical subset, ordering, or matching, then verify it exactly.',
+    tone: 'green',
+  },
+  {
+    index: '01',
+    name: 'MCQ',
+    score: '88.1',
+    eyebrow: 'Visible final options',
+    detail: 'Easy to score, but answer choices can turn recall into recognition.',
+    tone: 'blue',
   },
 ];
 
@@ -100,9 +104,9 @@ export default function Home() {
         <div className="instrument-panel" aria-label="GPT-5 scores across evaluation instruments">
           <div className="panel-kicker"><span>Fixed setting</span><span>GPT-5 · MyCulture · aligned knowledge</span></div>
           <div className="format-stack">
-            {formats.map((format, index) => (
+            {formats.map((format) => (
               <article className={`format-card ${format.tone}`} key={format.name}>
-                <div className="format-index">0{index + 1}</div>
+                <div className="format-index">{format.index}</div>
                 <div>
                   <div className="format-heading"><h2 className={format.name === 'CSRQ' ? 'csrq-wordmark' : undefined}>{format.name}</h2><strong>{format.score}</strong></div>
                   <p className="format-eyebrow">{format.eyebrow}</p>
@@ -114,15 +118,6 @@ export default function Home() {
           <div className="instrument-axis"><span>Evaluation instrument changes</span><span aria-hidden="true">→</span></div>
         </div>
       </header>
-
-      <section className="stats-band" aria-label="MyCulture benchmark at a glance">
-        <div className="shell stats-grid">
-          <div><strong data-count="5463">5,463</strong><span>questions in total</span></div>
-          <div><strong data-count="1821">1,821</strong><span>per evaluation format</span></div>
-          <div><strong data-count="6">6</strong><span>cultural dimensions</span></div>
-          <div><strong data-count="3">3</strong><span>parallel instruments</span></div>
-        </div>
-      </section>
 
       <aside className="benchmark-gateway shell" aria-labelledby="benchmark-gateway-title">
         <div className="gateway-mark" aria-hidden="true"><span>01</span><strong>→</strong></div>
@@ -159,7 +154,7 @@ export default function Home() {
         <div className="shell">
           <div className="split-heading">
             <div><p className="section-label">How <span className="csrq-wordmark">CSRQ</span> works</p><h2>Construct the answer. Verify the structure.</h2></div>
-            <p>CSRQs use familiar multi-select, ordering, and matching structures as canonical answer spaces for LLM evaluation—not as new human-test item archetypes.</p>
+            <p>CSRQs use familiar multi-select, ordering, and matching structures as canonical answer spaces for LLM evaluation, not as new human-test item archetypes.</p>
           </div>
           <CsrqDemo />
           <div className="equation-line" aria-label="Strict scoring equation">
@@ -198,7 +193,7 @@ export default function Home() {
           <div className="section-intro results-intro">
             <p className="section-label">Empirical validation</p>
             <h2>The same knowledge produces different measured scores.</h2>
-            <p>Across benchmark families and model scales, removing final-answer combinations changes performance—even when scoring remains deterministic.</p>
+            <p>Across benchmark families and model scales, removing final-answer combinations changes performance, even when scoring remains deterministic.</p>
           </div>
 
           <figure className="chart-card chart-wide">
@@ -207,19 +202,23 @@ export default function Home() {
             <figcaption>Option-removal sensitivity is observed across model families, including models above 100B parameters.</figcaption>
           </figure>
 
-          <div className="result-grid">
-            <figure className="chart-card">
-              <div className="mini-kicker">MyCulture</div>
-              <h3>Instrument gaps remain substantial.</h3>
+          <figure className="chart-card gap-story" aria-labelledby="gap-story-title">
+            <div className="mini-kicker">MyCulture · reading the gaps</div>
+            <h3 id="gap-story-title">A gap is not a model score.</h3>
+            <p className="gap-story-lead">Each bar shows how far one model&apos;s score moves when only the question format changes. It tells you how sensitive the score is to the format, not how capable the model is.</p>
+            <div className="gap-story-body">
               <InstrumentGapChart fallbackHref={`${basePath}/assets/instrument-gaps.png`} />
-              <figcaption>MCQ–CSRQ captures option-removal sensitivity; CSRQ–CRQ captures the shift to judge-based scoring.</figcaption>
-            </figure>
-            <article className="result-statement">
-              <span className="quote-mark">“</span>
-              <blockquote>Benchmark scores are model–instrument outcomes, not properties of the model alone.</blockquote>
-              <div className="rank-note"><strong>ρ = 0.95</strong><span>MCQ and strict CSRQ still produce highly consistent model rankings.</span></div>
-            </article>
-          </div>
+              <aside className="result-statement gap-reading" aria-label="How to read the gap chart">
+                <p className="gap-reading-label">How to read the chart</p>
+                <ul className="gap-reading-keys">
+                  <li><i className="legend-blue" aria-hidden="true" /><div><strong>Blue: answer options removed</strong><span>MCQ to strict CSRQ</span></div></li>
+                  <li><i className="legend-green" aria-hidden="true" /><div><strong>Green: a judge scores the answer</strong><span>Strict CSRQ to strict CRQ</span></div></li>
+                </ul>
+                <blockquote>Benchmark scores are model–instrument outcomes, not properties of the model alone.</blockquote>
+                <div className="rank-note"><strong>ρ = 0.95</strong><span>Yet MCQ and strict CSRQ rank the models almost identically.</span></div>
+              </aside>
+            </div>
+          </figure>
 
           <figure className="judge-card">
             <div className="judge-copy">
@@ -265,7 +264,7 @@ export default function Home() {
 
       <section className="section limitations-section">
         <div className="shell limitations-grid">
-          <div><p className="section-label">Responsible interpretation</p><h2>What <span className="csrq-wordmark">CSRQ</span> does—and does not—claim.</h2></div>
+          <div><p className="section-label">Responsible interpretation</p><h2>What <span className="csrq-wordmark">CSRQ</span> does and does not claim.</h2></div>
           <div className="limitations-list">
             <p><span>01</span>CSRQs do not prove genuine understanding or higher-order comprehension.</p>
             <p><span>02</span>They work best when an answer can be decomposed into valid response units.</p>

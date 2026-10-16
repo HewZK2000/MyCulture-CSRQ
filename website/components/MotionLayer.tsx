@@ -233,7 +233,7 @@ export default function MotionLayer({ children }: MotionLayerProps) {
     );
 
     // Scroll reveals hide off-screen content until it is scrolled to, so finish them before
-    // printing or "Save as PDF" — otherwise those sections come out blank.
+    // printing or "Save as PDF", otherwise those sections come out blank.
     const finishRevealsForPrint = () => {
       ScrollTrigger.getAll().forEach((trigger) => {
         if (!trigger.vars.scrub) trigger.animation?.progress(1);
