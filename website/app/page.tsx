@@ -280,10 +280,10 @@ export default function Home() {
           <div className="resource-copy">
             <p className="section-label">Resources</p>
             <h2>Read, reproduce, and extend the work.</h2>
-            <p>The paper and evaluation toolkit are available now. Dataset files, prompts, and filtering logs will be connected here when released.</p>
+            <p>The paper, MyCulture dataset, and evaluation toolkit are available now.</p>
             <div className="resource-links">
               <a href="https://drive.google.com/file/d/1z28TAx8mLZcl2D_3s7_6oXTKTycgABb-/view?usp=sharing"><span>PDF</span><b>Paper</b><i>Available ↗</i></a>
-              <div aria-disabled="true"><span>DATA</span><b>MyCulture</b><i>Coming soon</i></div>
+              <a href="https://github.com/HewZK2000/MyCulture-CSRQ"><span>DATA</span><b>MyCulture</b><i>Available ↗</i></a>
               <a href="https://github.com/HewZK2000/MyCulture-CSRQ"><span>CODE</span><b>Evaluation toolkit</b><i>Available ↗</i></a>
             </div>
           </div>

@@ -33,7 +33,7 @@ export default function BenchmarkPage() {
             <p className="benchmark-overline">Benchmark profile</p>
             <h1><em>MyCulture</em> makes the evaluation instrument visible.</h1>
             <p>Each underlying Malaysian cultural knowledge item is instantiated in parallel MCQ, CSRQ, and CRQ formats—holding the knowledge target constant while changing answer exposure and scoring.</p>
-            <div className="hero-actions"><span className="button button-primary" aria-disabled="true">Dataset · coming soon</span><a className="button button-secondary" href="https://drive.google.com/file/d/1z28TAx8mLZcl2D_3s7_6oXTKTycgABb-/view?usp=sharing">Read paper ↗</a></div>
+            <div className="hero-actions"><a className="button button-primary" href="https://github.com/HewZK2000/MyCulture-CSRQ">Dataset <span aria-hidden="true">↗</span></a><a className="button button-secondary" href="https://drive.google.com/file/d/1z28TAx8mLZcl2D_3s7_6oXTKTycgABb-/view?usp=sharing">Read paper ↗</a></div>
           </div>
           <div className="benchmark-orbit" aria-label="Three parallel benchmark formats">
             <div className="orbit-center"><strong data-count="1821">1,821</strong><span>knowledge targets</span></div>
@@ -125,7 +125,7 @@ export default function BenchmarkPage() {
         <div className="shell">
           <div className="section-intro compact"><p className="section-label">Intended use</p><h2>Use MyCulture to study evaluation sensitivity—not to reduce culture to a single score.</h2></div>
           <div className="use-grid"><article><span>Recommended</span><ul><li>Matched MCQ–CSRQ audit</li><li>Judge-sensitivity analysis</li><li>Format-following diagnostics</li><li>Malaysia-centered cultural evaluation</li></ul></article><article><span>Use with care</span><ul><li>Claims of complete cultural coverage</li><li>Claims of genuine understanding</li><li>Universal ranking conclusions</li><li>Unreviewed high-stakes deployment</li></ul></article></div>
-          <div className="benchmark-cta"><div><h3>Ready to examine the full methodology?</h3><p>Read the paper and explore the <a href="https://github.com/HewZK2000/MyCulture-CSRQ">evaluation toolkit on GitHub ↗</a>. Return here for the dataset when released.</p></div><a className="button button-primary" href="https://drive.google.com/file/d/1z28TAx8mLZcl2D_3s7_6oXTKTycgABb-/view?usp=sharing">Open the paper ↗</a></div>
+          <div className="benchmark-cta"><div><h3>Ready to examine the full methodology?</h3><p>Read the paper and explore the <a href="https://github.com/HewZK2000/MyCulture-CSRQ">dataset and evaluation toolkit on GitHub ↗</a>.</p></div><a className="button button-primary" href="https://drive.google.com/file/d/1z28TAx8mLZcl2D_3s7_6oXTKTycgABb-/view?usp=sharing">Open the paper ↗</a></div>
         </div>
       </section>
 
