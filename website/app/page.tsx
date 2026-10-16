@@ -70,7 +70,7 @@ export default function Home() {
           <a href="#idea">The idea</a>
           <a href="#results">Results</a>
           <a href="#pipeline">Pipeline</a>
-          <a href={`${basePath}/assets/myculture-paper.pdf`}>Paper</a>
+          <a href="https://drive.google.com/file/d/1z28TAx8mLZcl2D_3s7_6oXTKTycgABb-/view?usp=sharing">Paper</a>
         </div>
         <a className="nav-paper nav-benchmark" href={`${basePath}/benchmark`}>
           Explore benchmark <span aria-hidden="true">→</span>
@@ -91,8 +91,8 @@ export default function Home() {
           <p className="author-notes"><sup>*</sup> Equal contribution · <sup>†</sup> Corresponding author</p>
           <div className="hero-actions">
             <a className="button button-primary" href={`${basePath}/benchmark`}>Explore the benchmark <span aria-hidden="true">→</span></a>
-            <a className="button button-secondary" href={`${basePath}/assets/myculture-paper.pdf`}>Read the paper <span aria-hidden="true">↗</span></a>
-            <span className="button button-muted" aria-disabled="true">Code · soon</span>
+            <a className="button button-secondary" href="https://drive.google.com/file/d/1z28TAx8mLZcl2D_3s7_6oXTKTycgABb-/view?usp=sharing">Read the paper <span aria-hidden="true">↗</span></a>
+            <a className="button button-secondary" href="https://github.com/HewZK2000/MyCulture-CSRQ">Code <span aria-hidden="true">↗</span></a>
           </div>
           <div className="scroll-cue" aria-hidden="true"><span className="scroll-cue-line" />Scroll to explore</div>
         </div>
@@ -280,11 +280,11 @@ export default function Home() {
           <div className="resource-copy">
             <p className="section-label">Resources</p>
             <h2>Read, reproduce, and extend the work.</h2>
-            <p>The paper is available now. Dataset files, prompts, filtering logs, and conversion code will be connected here when released.</p>
+            <p>The paper and evaluation toolkit are available now. Dataset files, prompts, and filtering logs will be connected here when released.</p>
             <div className="resource-links">
-              <a href={`${basePath}/assets/myculture-paper.pdf`}><span>PDF</span><b>Paper</b><i>Available ↗</i></a>
+              <a href="https://drive.google.com/file/d/1z28TAx8mLZcl2D_3s7_6oXTKTycgABb-/view?usp=sharing"><span>PDF</span><b>Paper</b><i>Available ↗</i></a>
               <div aria-disabled="true"><span>DATA</span><b>MyCulture</b><i>Coming soon</i></div>
-              <div aria-disabled="true"><span>CODE</span><b>Evaluation toolkit</b><i>Coming soon</i></div>
+              <a href="https://github.com/HewZK2000/MyCulture-CSRQ"><span>CODE</span><b>Evaluation toolkit</b><i>Available ↗</i></a>
             </div>
           </div>
           <CopyCitation />

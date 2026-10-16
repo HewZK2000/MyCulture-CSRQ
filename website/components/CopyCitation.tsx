@@ -2,11 +2,12 @@
 
 import { useState } from 'react';
 
-const citation = `@misc{hew2026myculture,
-  title={Between Multiple Choice and Open Response: Evaluating LLMs with Option-Free Deterministic Scoring},
+const citation = `@inproceedings{hew2025myculture,
+  title={Between Multiple Choice and Open Response:
+Evaluating LLMs with Option-Free Deterministic Scoring},
   author={Hew, Zhong Ken and Yang, Sze Jue and Chan, Chee Seng},
-  year={2026},
-  note={Preprint}
+  booktitle={Proceedings of the 2026 Conference on Empirical Methods in Natural Language Processing},
+  year={2026}
 }`;
 
 export default function CopyCitation() {
