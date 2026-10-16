@@ -69,7 +69,7 @@ export default function BenchmarkPage() {
     <main className="benchmark-page">
       <nav className="site-nav" aria-label="Benchmark navigation">
         <a className="brand" href={`${basePath}/`}><img src={`${basePath}/assets/malaysia-flag.png`} alt="" /><span>MyCulture</span><span className="brand-mark"><span aria-hidden="true">×</span><span className="csrq-wordmark">CSRQ</span></span></a>
-        <div className="nav-links"><a href="#dimensions">Dimensions</a><a href="#formats">Formats</a><a href="#performance">Performance</a><a href="#construction">Construction</a><a href="#use">Use</a></div>
+        <div className="nav-links"><a href="#dimensions">Dimensions</a><a href="#formats">Formats</a><a href="#performance">Performance</a><a href="#construction">Construction</a><a href="#use">Use</a><a href={`${basePath}/contact/`}>Contact</a></div>
         <a className="nav-paper" href={`${basePath}/`}>Paper site <span aria-hidden="true">↗</span></a>
       </nav>
 
@@ -182,7 +182,7 @@ export default function BenchmarkPage() {
         </div>
       </section>
 
-      <footer className="site-footer"><div className="shell footer-grid"><div><a className="brand footer-brand" href={`${basePath}/`}><img src={`${basePath}/assets/malaysia-flag.png`} alt="" /><span>MyCulture × <span className="csrq-wordmark">CSRQ</span></span></a><p>Universiti Malaya · Malaysia</p></div><div><strong>Benchmark</strong><p>5,463 questions · Bahasa Malaysia</p></div><div><strong>Contact</strong><a href="mailto:cs.chan@um.edu.my">cs.chan@um.edu.my</a></div></div></footer>
+      <footer className="site-footer"><div className="shell footer-grid"><div><a className="brand footer-brand" href={`${basePath}/`}><img src={`${basePath}/assets/malaysia-flag.png`} alt="" /><span>MyCulture × <span className="csrq-wordmark">CSRQ</span></span></a><p>Universiti Malaya · Malaysia</p></div><div><strong>Benchmark</strong><p>5,463 questions · Bahasa Malaysia</p></div><div><strong>Contact</strong><a href="mailto:cs.chan@um.edu.my">cs.chan@um.edu.my</a><a href={`${basePath}/contact/`}>Send us a message →</a></div></div></footer>
     </main>
   );
 }

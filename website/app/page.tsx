@@ -75,6 +75,7 @@ export default function Home() {
           <a href="#results">Results</a>
           <a href="#pipeline">Pipeline</a>
           <a href="https://drive.google.com/file/d/1z28TAx8mLZcl2D_3s7_6oXTKTycgABb-/view?usp=sharing">Paper</a>
+          <a href={`${basePath}/contact/`}>Contact</a>
         </div>
         <a className="nav-paper nav-benchmark" href={`${basePath}/benchmark`}>
           Explore benchmark <span aria-hidden="true">→</span>
@@ -294,7 +295,7 @@ export default function Home() {
         <div className="shell footer-grid">
           <div><a className="brand footer-brand" href="#top"><img src={`${basePath}/assets/malaysia-flag.png`} alt="" /><span>MyCulture × <span className="csrq-wordmark">CSRQ</span></span></a><p>Universiti Malaya · Malaysia</p></div>
           <div><strong>Authors</strong><p>Zhong Ken Hew · Sze Jue Yang · Chee Seng Chan</p></div>
-          <div><strong>Contact</strong><a href="mailto:cs.chan@um.edu.my">cs.chan@um.edu.my</a></div>
+          <div><strong>Contact</strong><a href="mailto:cs.chan@um.edu.my">cs.chan@um.edu.my</a><a href={`${basePath}/contact/`}>Send us a message →</a></div>
         </div>
         <div className="shell footer-bottom"><span>© 2026 MyCulture</span><span>Built for clear, auditable evaluation.</span></div>
       </footer>
