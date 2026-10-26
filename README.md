@@ -6,7 +6,7 @@ Official repository for the paper **"Between Multiple Choice and Open Response: 
 Universiti Malaya, Malaysia  
 \* Equal contribution
 
-Paper (<a href="http://www.cs-chan.com/doc/EMNLP2026.pdf" target="_blank">PDF</a>) · [Dataset](Dataset/) · Converter (coming soon) · [Evaluation](Evaluation/)
+[ <a href="http://www.cs-chan.com/doc/EMNLP2026.pdf" target="_blank">Paper</a> ] · [ <a href="http://www.cs-chan.com/doc/EMNLP2026_poster.pdf" target="_blank">Poster</a> ] · [ [Dataset](Dataset/) ] · [ Converter (coming soon) ] · [ [Evaluation](Evaluation/) ]
 
 ## Overview
 
@@ -86,18 +86,18 @@ The dataset and code will be released soon. Please watch this repository for upd
 
 ## Citation
 
-If you find this work useful, please cite the paper. The final BibTeX entry will be added when publication metadata is available.
+If you find this work useful, please cite the paper.
 
 ```bibtex
 @inproceedings{hew2025myculture,
   title={Between Multiple Choice and Open Response: Evaluating LLMs with Option-Free Deterministic Scoring},
   author={Hew, Zhong Ken and Yang, Sze Jue and Chan, Chee Seng},
   booktitle={Proceedings of the 2026 Conference on Empirical Methods in Natural Language Processing},
-  pages = {19582--19605},
+  pages = {19582-19605},
   year={2026}
 }
 ```
 
 ## Contact
 
-For questions about this work, please contact **Chee Seng Chan** at `cs.chan@um.edu.my`.
+For questions about this work, please contact **Chee Seng Chan** at `cs.chan at um.edu.my`.
