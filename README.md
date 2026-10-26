@@ -1,12 +1,14 @@
 # MyCulture: Evaluating LLMs with Option-Free Deterministic Scoring
 
+##### Released on October 25, 2026
+
 Official repository for the paper **"Between Multiple Choice and Open Response: Evaluating LLMs with Option-Free Deterministic Scoring."**
 
 **Zhong Ken Hew\***, **Sze Jue Yang\***, and **Chee Seng Chan**  
 Universiti Malaya, Malaysia  
 \* Equal contribution
 
-[ <a href="http://www.cs-chan.com/doc/EMNLP2026.pdf" target="_blank">Paper</a> ] · [ <a href="http://www.cs-chan.com/doc/EMNLP2026_poster.pdf" target="_blank">Poster</a> ] · [ [Dataset](Dataset/) ] · [ Converter (coming soon) ] · [ [Evaluation](Evaluation/) ]
+[ <a href="https://hewzk2000.github.io/MyCulture-CSRQ/" target="_blank">Project Page</a> ] · [ <a href="http://www.cs-chan.com/doc/EMNLP2026.pdf" target="_blank">Paper</a> ] · [ <a href="http://www.cs-chan.com/doc/EMNLP2026_poster.pdf" target="_blank">Poster</a> ] · [ [Dataset](Dataset/) ] · [ Converter (coming soon) ] · [ [Evaluation](Evaluation/) ]
 
 ## Overview
 
